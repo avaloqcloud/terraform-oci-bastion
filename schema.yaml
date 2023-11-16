@@ -1,0 +1,115 @@
+title: "Bastion Service"
+description: "Bastion Service Creation in OCI"
+outputGroups:
+- title: "Bastion Service"
+schemaVersion: 1.1.0
+locale: "en"
+variableGroups:
+  - title: "OCI(Oracle Cloud Infrastructure) details"
+    variables:
+      - compartment_ocid
+
+  - title: "Instance configuration details"
+    variables:    
+      - bastion_type
+      - bastion_name
+
+  - title: "Configure Networking"
+    variables: 
+      - useExistingVcn
+      - vcnCompartment
+      - myVcn
+      - subnetCompartment
+      - subnet_id
+      - dns_proxy_status
+      - client_cidr_block_allow_list
+
+  - title: "Management"
+    variables: 
+      - max_session_ttl_in_seconds
+      
+variables:
+  bastion_type:
+    type: enum
+    required: true
+    description: "The type of bastion"
+    title: "Type"
+    enum: 
+     - standard
+    default: standard
+
+  compartment_ocid:
+    type: oci:identity:compartment:id
+    required: true
+    description: "Select the OCI compartment within your tenancy for instance creation"
+    title: "Compartment"
+  bastion_name:
+    type: string
+    minLength: 1
+    maxLength: 255
+    pattern: "^[a-z][a-zA-Z0-9]+$"
+    title: Bastion Name
+    description: "Bastion Name"
+    required: true
+
+  vcnCompartment:
+    type: oci:identity:compartment:id
+    required: true
+    title: VCN compartment
+    
+  myVcn:
+    type: oci:core:vcn:id
+    dependsOn:
+      compartmentId: ${vcnCompartment}
+    required: true
+    title: VCN
+    description: "Choose VCN to create Bastion service"
+
+  subnetCompartment:
+    type: oci:identity:compartment:id
+    default: ${vcnCompartment}
+    required: true
+    title: Subnet compartment
+
+  subnet_id:
+    type: oci:core:subnet:id
+    dependsOn:
+      compartmentId: ${subnetCompartment}
+      vcnId: ${myVcn}
+    required: true
+    title: Subnet
+    description: "Choose subnet to create Bastion service"
+
+  dns_proxy_status:
+    type: enum
+    enum: 
+     - ENABLED
+     - DISABLED
+    default: DISABLED
+    required: true
+    title: Enable FQDN and SOCKS5
+    description: "Flag to enable FQDN and SOCKS5 Proxy Support"
+
+  client_cidr_block_allow_list: 
+    type: string
+    title: IP CIDR Block
+    description: "A list of address ranges in CIDR notation that you want to allow to connect to sessions hosted by this bastion"
+    required: true
+    #type: array
+    #items:
+    #  type: string
+      #pattern: "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
+    # minItems: 1
+    # uniqueItems: true
+    # default: [11.0.0.0/24]
+    # description: "A list of address ranges in CIDR notation that you want to allow to connect to sessions hosted by this bastion"
+    # required: true
+
+  max_session_ttl_in_seconds: 
+    type: number
+    title: Bastion TTL
+    description: "The maximum amount of time in seconds that any session on the bastion can remain active."
+    required: true
+    default: 10800
+    minimum: 1800
+    maximum: 10800
