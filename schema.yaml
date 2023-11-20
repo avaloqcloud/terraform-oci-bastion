@@ -22,7 +22,7 @@ variableGroups:
       - subnetCompartment
       - subnet_id
       - dns_proxy_status
-      - client_cidr_block_allow_list
+      #- client_cidr_block_allow_list
 
   - title: "Management"
     variables: 
@@ -89,21 +89,6 @@ variables:
     required: true
     title: Enable FQDN and SOCKS5
     description: "Flag to enable FQDN and SOCKS5 Proxy Support"
-
-  client_cidr_block_allow_list: 
-    type: string
-    title: IP CIDR Block
-    description: "A list of address ranges in CIDR notation that you want to allow to connect to sessions hosted by this bastion"
-    required: true
-    #type: array
-    #items:
-    #  type: string
-      #pattern: "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
-    # minItems: 1
-    # uniqueItems: true
-    # default: [11.0.0.0/24]
-    # description: "A list of address ranges in CIDR notation that you want to allow to connect to sessions hosted by this bastion"
-    # required: true
 
   max_session_ttl_in_seconds: 
     type: number
