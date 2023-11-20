@@ -10,7 +10,7 @@ variable "compartment_ocid" {
 
 variable "client_cidr_block_allow_list" {
     type = string
-  
+    default = ["0.0.0.0/0"]
 }
 
 variable "dns_proxy_status" {
