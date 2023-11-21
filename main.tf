@@ -12,7 +12,7 @@ resource "oci_bastion_bastion" "bastion" {
 
 resource "oci_bastion_session" "test_session_managed_ssh" {
 
-  bastion_id = var.oci_bastion_bastion.bastion.id
+  bastion_id = oci_bastion_bastion.bastion.id
   key_details {
     public_key_content = var.session_key_details_public_key_content
   }
