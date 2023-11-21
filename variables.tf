@@ -11,11 +11,9 @@ variable "client_cidr_block_allow_list" {
 }
 
 variable "dns_proxy_status" {
-    type = string 
 }
 
 variable "max_session_ttl_in_seconds" {
-    type = string
 }
 
 variable "bastion_name" {
@@ -23,7 +21,6 @@ variable "bastion_name" {
 }
 
 variable "subnet_id" {
-    type = string
 }
 
 ############### Bastion Session Variables
@@ -33,7 +30,7 @@ variable "instance_id" {
 }
 
 variable "session_display_name" {
-  default = "bastionSessionExample"
+  default = "bastionSession"
 }
 
 variable "session_key_details_public_key_content" {
