@@ -23,8 +23,6 @@ variable "bastion_name" {
 variable "subnet_id" {
 }
 
-############### Bastion Session Variables
-
 variable "instance_id" { 
     #default = "ocid1.instance.oc1.eu-zurich-1.an5heljr2f6evfqcve2bq6fgwv43retht2vk7lsooelmkui6wp22237mi3ma"
 }
