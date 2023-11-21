@@ -22,7 +22,6 @@ variableGroups:
       - subnetCompartment
       - subnet_id
       - dns_proxy_status
-      #- client_cidr_block_allow_list
 
   - title: "Management"
     variables: 
