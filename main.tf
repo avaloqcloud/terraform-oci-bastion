@@ -4,7 +4,7 @@ resource "oci_bastion_bastion" "bastion" {
     compartment_id = var.compartment_ocid
     target_subnet_id = var.subnet_id
 
-    client_cidr_block_allow_list = var.client_cidr_block_allow_list
+    client_cidr_block_allow_list = ["var.client_cidr_block_allow_list"]
     dns_proxy_status = var.dns_proxy_status
     max_session_ttl_in_seconds = var.max_session_ttl_in_seconds
     name = var.bastion_name
