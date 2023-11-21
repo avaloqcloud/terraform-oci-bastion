@@ -64,9 +64,5 @@ variable "target_resource_operating_system_user_name" {
     default = "opc"
 }
 
-variable "session_target_resource_details_target_resource_port" {
-    default = 22
-}
-
 variable "instance_private_ip" {
 }
