@@ -7,6 +7,7 @@ variable "compartment_ocid" {
 }
 
 variable "client_cidr_block_allow_list" {
+    description = "A list of address ranges in CIDR notation that you want to allow to connect to sessions hosted by this bastion"
 }
 
 variable "dns_proxy_status" {
