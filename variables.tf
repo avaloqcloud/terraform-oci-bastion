@@ -1,61 +1,22 @@
-variable "bastion_type" {
-    type = string
-}
-
-variable "compartment_ocid" {
-    type = string 
-}
-
-variable "client_cidr_block_allow_list" {
-    description = "A list of address ranges in CIDR notation that you want to allow to connect to sessions hosted by this bastion"
-}
-
-variable "dns_proxy_status" {
-}
-
-variable "max_session_ttl_in_seconds" {
-}
-
-variable "bastion_name" {
-    type = string
-}
-
-variable "subnet_id" {
-}
-
-variable "instance_id" { 
-}
-
-variable "session_display_name" {
-  default = "bastionSession"
-}
-
-variable "session_key_details_public_key_content" {
-}
-
-variable "session_key_type" {
-  default = "PUB"
-}
-
-variable "session_session_lifecycle_state" {
-  default = "ACTIVE"
-}
-
-variable "session_session_ttl_in_seconds" {
-  default = 1800
-}
-
-variable "session_target_resource_details_session_type_managed_ssh" {
-  default = "MANAGED_SSH"
-}
-
-variable "session_target_resource_details_target_resource_port" {
-  default = 22
-} 
-
-variable "target_resource_operating_system_user_name" {
-    default = "opc"
-}
-
-variable "instance_private_ip" {
+variable "bastion" {
+  description = "Bastion service input object"
+  type = object({
+    bastion_type = string,
+    compartment_ocid = string,
+    client_cidr_block_allow_list = string,
+    dns_proxy_status = string,
+    max_session_ttl_in_seconds = string,
+    bastion_name = string,
+    subnet_id = string,
+    instance_id = string,
+    session_display_name = string,
+    session_key_details_public_key_content = string,
+    session_key_type = string,
+    session_session_lifecycle_state = string,
+    session_session_ttl_in_seconds = string,
+    session_target_resource_details_session_type_managed_ssh = string,
+    session_target_resource_details_target_resource_port = number,
+    target_resource_operating_system_user_name = string,
+    instance_private_ip = string
+  })
 }
